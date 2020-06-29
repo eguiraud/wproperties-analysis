@@ -26,7 +26,7 @@ p = RDFtree(outputDir = 'TEST', inputFile = inputFile, outputFile="test3.root")
 p.branch(nodeToStart = 'input', nodeToEnd = 'basicSelection', modules = [getLumiWeight(xsec=61526.7, inputFile=inputFile), ROOT.defineHarmonics(), basicSelection()])
 p.branch(nodeToStart = 'basicSelection', nodeToEnd = 'AngCoeff', modules = [ROOT.AngCoeff()])
 
-"""
+
 pdf = ROOT.vector('string')()
 for i in range(1,102):
 	pdf.push_back('replica{}'.format(i))
@@ -48,7 +48,7 @@ p.branch(nodeToStart = 'accMap', nodeToEnd = 'dataObs', modules =[ROOT.dataObs()
 
 p.getOutput()
 #p.saveGraph()
-"""		
+
 
 
 

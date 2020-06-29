@@ -13,7 +13,7 @@ from basicSelection import *
 
 ROOT.gSystem.Load('bin/libSignalAnalysis.so')
 
-c=64
+c=4
 		
 ROOT.ROOT.EnableImplicitMT(c)
 

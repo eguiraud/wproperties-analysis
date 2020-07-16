@@ -35,12 +35,12 @@ p.branch(nodeToStart = 'basicSelection', nodeToEnd = 'AngCoeffPDF', modules = [R
 
 p.getOutput()
 
-p.branch(nodeToStart = 'AngCoeff', nodeToEnd = 'AngCoeff2',modules = [ROOT.getACValues([h for h in p.getObjects('AngCoeff') if 'vector' in h.__cppname__][0])])
-#p.branch(nodeToStart = 'AngCoeffPDF', nodeToEnd = 'AngCoeffPDF2',modules = [ROOT.getACValues([h for h in p.getObjects('AngCoeff') if 'vector' in h.__cppname__][0])])
+p.branch(nodeToStart = 'AngCoeff', nodeToEnd = 'AngCoeff2',modules = [ROOT.getACValues([h for h in p.getObjects('AngCoeff') if 'vector' in type(h).__cpp_name__][0])])
+#p.branch(nodeToStart = 'AngCoeffPDF', nodeToEnd = 'AngCoeffPDF2',modules = [ROOT.getACValues([h for h in p.getObjects('AngCoeff') if 'vector' in type(h).__cpp_name__][0])])
 
 maps = ROOT.vector(ROOT.RDF.RResultPtr('TH2D'))()
 for i in range(0,3):
-	maps.push_back([h for h in p.getObjects('AngCoeff') if not 'vector' in h.__cppname__][i])
+	maps.push_back([h for h in p.getObjects('AngCoeff') if not 'vector' in type(h).__cpp_name__][i])
 
 p.branch(nodeToStart = 'AngCoeff2', nodeToEnd = 'accMap', modules =[ROOT.getAccMap(maps)])
 p.branch(nodeToStart = 'accMap', nodeToEnd = 'templates', modules =[ROOT.getWeights(), ROOT.templateBuilder()])
